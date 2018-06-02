@@ -72,6 +72,4 @@ class BooksList extends Component {
     }
 }
 
-
-
 export default BooksList

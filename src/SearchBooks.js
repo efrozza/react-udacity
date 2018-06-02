@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './css/App.css'
 import * as BooksAPI from './utils/BooksAPI'
-import BooksList from './BooksList'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import Book from './Book'
@@ -12,19 +11,23 @@ class SearchBooks extends Component {
 
     state = {
         books: [],
-        query: ''
+        query: '',
+        booksShelf: []
     }
 
     componentDidMount() {
-        BooksAPI.getAll().then((books) => {
-            this.setState({ books: books })
-        })
+        this.setState({ books: [] })
+        //obtem livros com shef
+        BooksAPI.getAll().then((booksShelf) => {
+            this.setState({ booksShelf: booksShelf })
+          })
+      
     }
 
     updateQuery = (query) => {
         this.setState({ query: query.trim() })
         BooksAPI.search(this.state.query).then((books) => {
-            this.setState({ books: books })
+            this.setState({ books: books })    
         })
     }
     render() {
