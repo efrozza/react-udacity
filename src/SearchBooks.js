@@ -2,32 +2,59 @@ import React, { Component } from 'react'
 import './css/App.css'
 import * as BooksAPI from './utils/BooksAPI'
 import BooksList from './BooksList'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
+import Book from './Book'
+import { DebounceInput } from 'react-debounce-input';
+
 
 class SearchBooks extends Component {
+
     state = {
         books: [],
         query: ''
     }
 
     componentDidMount() {
-        BooksAPI.getAll(this.state.query).then((books) => {
+        BooksAPI.getAll().then((books) => {
             this.setState({ books: books })
         })
     }
 
+    updateQuery = (query) => {
+        this.setState({ query: query.trim() })
+        BooksAPI.search(this.state.query).then((books) => {
+            this.setState({ books: books })
+        })
+    }
     render() {
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
                     <div className="search-books-input-wrapper">
-                        <input type="text" placeholder="Search by title or author" />
+                        <DebounceInput
+                            minLength={4}
+                            debounceTimeout={300}
+                            placeholder="Search by title or author"
+                            value={this.state.query}
+                            onChange={(event) => this.updateQuery(event.target.value)} />
                     </div>
                 </div>
-                <div className="search-books-results">
-                    <ol className="books-grid"> <BooksList
-                        books={this.state.books}  lista="todos" /></ol>
+                <div>
+                    <div className="bookshelf">
+                        <h2 className="bookshelf-title">All books</h2>
+                        <div className="bookshelf-books">
+                            <ol className="books-grid">
+                                {this.state.books.map((book) => (
+                                    <li key={book.id}>
+                                        <Book book={book} />
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         )
     }
