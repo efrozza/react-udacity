@@ -8,19 +8,6 @@ import Book from './Book'
 class BooksList extends Component {
 
     render() {
-        var shelfCurrent = this.props.books.filter(function (book) {
-            return book.shelf == "currentlyReading"
-        }
-        )
-        var shelfwantToRead = this.props.books.filter(function (book) {
-            return book.shelf == "wantToRead"
-        }
-        )
-        var shelfRead = this.props.books.filter(function (book) {
-            return book.shelf == "read"
-        }
-        )
-
         if (this.props.lista == "todos") {
             return (
                 <div>
@@ -39,6 +26,19 @@ class BooksList extends Component {
                 </div>
             )
         } else {
+
+            var shelfCurrent = this.props.books.filter(function (book) {
+                return book.shelf == "currentlyReading"
+            }
+            )
+            var shelfwantToRead = this.props.books.filter(function (book) {
+                return book.shelf == "wantToRead"
+            }
+            )
+            var shelfRead = this.props.books.filter(function (book) {
+                return book.shelf == "read"
+            }
+            )    
 
             return (
 
