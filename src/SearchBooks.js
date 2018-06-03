@@ -17,7 +17,8 @@ class SearchBooks extends Component {
     updateQuery = (query) => {
         this.setState({ query: query.trim() })
 
-        BooksAPI.search(this.state.query).then((newBooks) => {
+        BooksAPI.search(this.state.query).then((newBooks) => { 
+            try{
             for (const s of newBooks) {
                 s.shelf = 'none'
                 for (const b of this.props.books) {
@@ -26,11 +27,13 @@ class SearchBooks extends Component {
                     }
                 }
                 this.setState({ books: newBooks })
+            }}
+            catch(e){
+                console.log(e)
             }
         })
-
-
     }
+
     render() {
 
         return (

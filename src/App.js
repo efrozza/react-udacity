@@ -5,7 +5,6 @@ import BooksList from './BooksList'
 import SearchBooks from './SearchBooks'
 import './css/App.css'
 
-
 class App extends Component {
 
   constructor (props){
@@ -13,7 +12,7 @@ class App extends Component {
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
       console.log(`books`, books)
-    })
+    }).catch("Erro no acesso a BooksAPI")
 
     this.state = {
       books: []

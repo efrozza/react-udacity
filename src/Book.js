@@ -13,12 +13,21 @@ class Book extends Component {
     }
 
     render() {
+
+        const checkImage = (book) => {
+            if (this.props.book.imageLinks) {
+                return this.props.book.imageLinks.thumbnail
+            } else {
+                return "no-cover.png"
+            }
+        }
+
         return (
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{
                         width: 128, height: 193,
-                        backgroundImage: `url("${this.props.book.imageLinks.smallThumbnail}")`
+                        backgroundImage: `url("${checkImage(this.props.book)}")`
                     }}>
                     </div>
                     <div className="book-shelf-changer">
