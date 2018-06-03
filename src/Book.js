@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import * as BooksAPI from './utils/BooksAPI'
 import './css/App.css'
 
 class Book extends Component {
@@ -14,7 +13,6 @@ class Book extends Component {
     }
 
     render() {
-        console.log('render book', this.props)
         return (
             <div className="book">
                 <div className="book-top">

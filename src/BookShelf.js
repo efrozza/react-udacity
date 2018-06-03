@@ -6,7 +6,7 @@ class BookShelf extends Component {
     render() {
 
         const {  books, shelf } = this.props;
-        const filteredBooks = books.filter(b => b.shelf === shelf);
+        const filteredBooks = books.filter && books.filter(b => b.shelf === shelf);
         
         return (
 

@@ -12,9 +12,8 @@ class App extends Component {
     super(props)
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
+      console.log(`books`, books)
     })
-
-    this.updateShelf = this.updateShelf.bind(this)
 
     this.state = {
       books: []
@@ -22,7 +21,11 @@ class App extends Component {
   }
 
   updateShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf).then((res) => {            
+    BooksAPI.update(book, shelf).then((res) => {
+      const oldBooks = this.state.books.filter && this.state.books.filter(b => b.id != book.id);
+      book.shelf = shelf
+      const newBooks = oldBooks.concat(book)
+      this.setState ({books: newBooks})       
     })        
 }
 
