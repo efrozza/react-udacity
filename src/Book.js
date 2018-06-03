@@ -19,7 +19,7 @@ class Book extends Component {
     }
 
     render() {
-
+        console.log('render book')
         return (
             <div className="book">
                 <div className="book-top">

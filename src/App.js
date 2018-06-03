@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import * as BooksAPI from './utils/BooksAPI'
 import { Route } from 'react-router-dom'
 import BooksList from './BooksList'
-import { Link } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
 import './css/App.css'
 
@@ -19,6 +18,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('render app')
     return (
       <div className="app">
 

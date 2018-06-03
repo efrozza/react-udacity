@@ -21,12 +21,11 @@ class SearchBooks extends Component {
             for (const s of newBooks) {
                 s.shelf = 'none'
                 for (const b of this.props.books) {
-                    if (s.id == b.id) {
+                    if (s.id === b.id) {
                         s.shelf = b.shelf
                     }
                 }
                 this.setState({ books: newBooks })
-                console.log('books', this.state.books)
             }
         })
 
