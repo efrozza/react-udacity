@@ -53,7 +53,7 @@ class SearchBooks extends Component {
                         <h2 className="bookshelf-title">All books</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {this.state.books.map((book) => (
+                                {this.state.books.map && this.state.books.map((book) => (
                                     <li key={book.id}>
                                         <Book book={book} />
                                     </li>

@@ -7,15 +7,23 @@ import './css/App.css'
 
 
 class App extends Component {
-  state = {
-    books: []
-  }
 
-  componentDidMount() {
+  constructor (props){
+    super(props)
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
     })
+
+    this.state = {
+      books: []
+    }
   }
+
+  /*componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books: books })
+    })
+  }*/
 
   render() {
     console.log('render app')
