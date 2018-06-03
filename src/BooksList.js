@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import BookShelf from './BookShelf'
+//componente que lista todas as estantes
 
 class BooksList extends Component {
 

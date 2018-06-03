@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './css/App.css'
+//componente responsavel pela interface de livros
 
 class Book extends Component {
 
@@ -14,6 +15,7 @@ class Book extends Component {
 
     render() {
 
+        //verifica se existem imagem para o livro a ser listado
         const checkImage = (book) => {
             if (this.props.book.imageLinks) {
                 return this.props.book.imageLinks.thumbnail
@@ -30,9 +32,10 @@ class Book extends Component {
                         backgroundImage: `url("${checkImage(this.props.book)}")`
                     }}>
                     </div>
+                    
                     <div className="book-shelf-changer">
                         <select value={this.props.book.shelf} onChange={this.handleChange}>
-                            <option value="none" disabled>Move to...</option>
+                            <option value="other" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>
@@ -44,7 +47,6 @@ class Book extends Component {
                 <div className="book-authors">{this.props.book.authors}</div>
             </div>
         )
-
     }
 }
 

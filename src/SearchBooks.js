@@ -4,7 +4,7 @@ import Book from './Book'
 import { DebounceInput } from 'react-debounce-input';
 import { Link } from 'react-router-dom'
 import './css/App.css'
-
+//componente reesponsavel pela barra de pesquisa
 
 class SearchBooks extends Component {
 
@@ -27,9 +27,8 @@ class SearchBooks extends Component {
                     }
                 }
                 this.setState({ books: newBooks })
-            }}
-            catch(e){
-                console.log(e)
+            }}catch(e){
+             console.log(e)
             }
         })
     }

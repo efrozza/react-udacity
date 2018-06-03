@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import Book from './Book'
+//componente responsvel por listar livros por estante
 
 class BookShelf extends Component {
 
     render() {
 
         const {  books, shelf } = this.props;
+        
+        //recupera os livros que poseum a mesma estante informada via props
         const filteredBooks = books.filter && books.filter(b => b.shelf === shelf);
         
         return (
