@@ -9,17 +9,12 @@ class Book extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    updateShelf = (book, shelf) => {
-        BooksAPI.update(book, shelf).then((res) => {            
-        })        
-    }
-
     handleChange(event) {
-        this.updateShelf(this.props.book, event.target.value);
+        this.props.updateShelf(this.props.book, event.target.value);
     }
 
     render() {
-        console.log('render book')
+        console.log('render book', this.props)
         return (
             <div className="book">
                 <div className="book-top">

@@ -9,9 +9,9 @@ class BooksList extends Component {
         return (
 
             <div>
-                <BookShelf books={this.props.books} shelf="currentlyReading"/>
-                <BookShelf books={this.props.books} shelf="wantToRead"/>
-                <BookShelf books={this.props.books} shelf="read"/>
+                <BookShelf books={this.props.books} shelf="currentlyReading" updateShelf={this.props.updateShelf}/>
+                <BookShelf books={this.props.books} shelf="wantToRead" updateShelf={this.props.updateShelf}/>
+                <BookShelf books={this.props.books} shelf="read" updateShelf={this.props.updateShelf}/>
 
                 <div className="open-search">
                     <Link to="/search"

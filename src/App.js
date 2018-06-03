@@ -14,16 +14,17 @@ class App extends Component {
       this.setState({ books: books })
     })
 
+    this.updateShelf = this.updateShelf.bind(this)
+
     this.state = {
       books: []
     }
   }
 
-  /*componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books: books })
-    })
-  }*/
+  updateShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf).then((res) => {            
+    })        
+}
 
   render() {
     console.log('render app')
@@ -37,14 +38,14 @@ class App extends Component {
 
           <Route path="/search" render={() => (
             <div>
-              <SearchBooks books={this.state.books} />
+              <SearchBooks books={this.state.books} updateShelf={this.updateShelf} />
             </div>
           )} />
 
           <Route exact path="/" render={() => (
             <div className="list-books-content">
               <BooksList
-                books={this.state.books} />
+                books={this.state.books} updateShelf={this.updateShelf}/>
             </div>
           )} />
           
