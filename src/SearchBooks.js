@@ -1,39 +1,45 @@
 import React, { Component } from 'react'
-import './css/App.css'
 import * as BooksAPI from './utils/BooksAPI'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
 import Book from './Book'
 import { DebounceInput } from 'react-debounce-input';
+import { Link } from 'react-router-dom'
+import './css/App.css'
 
 
 class SearchBooks extends Component {
 
     state = {
         books: [],
-        query: '',
-        booksShelf: []
-    }
+        query: ''
 
-    componentDidMount() {
-        this.setState({ books: [] })
-        //obtem livros com shef
-        BooksAPI.getAll().then((booksShelf) => {
-            this.setState({ booksShelf: booksShelf })
-          })
-      
     }
 
     updateQuery = (query) => {
         this.setState({ query: query.trim() })
-        BooksAPI.search(this.state.query).then((books) => {
-            this.setState({ books: books })    
+
+        BooksAPI.search(this.state.query).then((newBooks) => {
+            for (const s of newBooks) {
+                s.shelf = 'none'
+                for (const b of this.props.books) {
+                    if (s.id == b.id) {
+                        s.shelf = b.shelf
+                    }
+                }
+                this.setState({ books: newBooks })
+                console.log('books', this.state.books)
+            }
         })
+
+
     }
     render() {
+
         return (
             <div className="search-books">
                 <div className="search-books-bar">
+                    <Link
+                        to="/"
+                        className="close-search">Close</Link>
                     <div className="search-books-input-wrapper">
                         <DebounceInput
                             minLength={4}

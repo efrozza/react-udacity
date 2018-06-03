@@ -27,13 +27,19 @@ class App extends Component {
             <h1>MyReads - Everton L. Frozza</h1>
           </div>
 
-          <Route path="/search" component={SearchBooks}/>
+          <Route path="/search" render={() => (
+            <div>
+              <SearchBooks books={this.state.books} />
+            </div>
+          )} />
+
           <Route exact path="/" render={() => (
             <div className="list-books-content">
               <BooksList
                 books={this.state.books} />
             </div>
           )} />
+          
         </div>
       </div>
     )
