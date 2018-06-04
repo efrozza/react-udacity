@@ -10,6 +10,7 @@ class BooksList extends Component {
         return (
 
             <div>
+                <h2 className="bookshelf-title">Total books: {this.props.books.length}</h2> 
                 <BookShelf books={this.props.books} shelf="currentlyReading" updateShelf={this.props.updateShelf} />
                 <BookShelf books={this.props.books} shelf="wantToRead" updateShelf={this.props.updateShelf} />
                 <BookShelf books={this.props.books} shelf="read" updateShelf={this.props.updateShelf} />
