@@ -20,6 +20,11 @@ class BooksList extends Component {
                     </Link>
                 </div>
 
+                <div className="clear-shelfs"> 
+                    <Link to="/" onClick={this.props.clearShelfs} >Clean all shelfs
+                    </Link>
+                </div>
+
             </div>
 
         )

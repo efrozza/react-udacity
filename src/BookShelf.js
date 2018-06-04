@@ -6,15 +6,14 @@ class BookShelf extends Component {
 
     render() {
 
-        const {  books, shelf } = this.props;
-        
+        const {  books, shelf } = this.props;        
         //recupera os livros que poseum a mesma estante informada via props
         const filteredBooks = books.filter && books.filter(b => b.shelf === shelf);
         
         return (
 
             <div className="bookshelf">
-                <h2 className="bookshelf-title">{this.shelf}</h2>
+                <h2 className="bookshelf-title">{shelf}</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
                         {filteredBooks && filteredBooks.map((book) => (
