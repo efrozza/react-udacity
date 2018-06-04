@@ -10,10 +10,21 @@ class BooksList extends Component {
         return (
 
             <div>
-                <h2 className="bookshelf-title">Total books: {this.props.books.length}</h2> 
-                <BookShelf books={this.props.books} shelf="currentlyReading" updateShelf={this.props.updateShelf} />
-                <BookShelf books={this.props.books} shelf="wantToRead" updateShelf={this.props.updateShelf} />
-                <BookShelf books={this.props.books} shelf="read" updateShelf={this.props.updateShelf} />
+                <h2 className="bookshelf-title">Total books: {this.props.books.length}</h2>
+                <BookShelf books={this.props.books}
+                           shelf="currentlyReading" 
+                           shelfTitle="Currently Reading" 
+                           updateShelf={this.props.updateShelf} />
+                
+                <BookShelf books={this.props.books} 
+                           shelf="wantToRead" 
+                           shelfTitle="Want To Read" 
+                           updateShelf={this.props.updateShelf} />
+
+                <BookShelf books={this.props.books} 
+                           shelf="read" 
+                           shelfTitle="Read"
+                           updateShelf={this.props.updateShelf} />
 
                 <div className="open-search">
                     <Link to="/search"
@@ -21,7 +32,7 @@ class BooksList extends Component {
                     </Link>
                 </div>
 
-                <div className="clear-shelfs"> 
+                <div className="clear-shelfs">
                     <Link to="/" onClick={this.props.clearShelfs} >Clean all shelfs
                     </Link>
                 </div>
