@@ -20,7 +20,7 @@ class SearchBooks extends Component {
         BooksAPI.search(this.state.query).then((newBooks) => { 
             try{
             for (const s of newBooks) {
-                s.shelf = 'none'
+                s.shelf = "none"
                 for (const b of this.props.books) {
                     if (s.id === b.id) {
                         s.shelf = b.shelf
@@ -28,7 +28,7 @@ class SearchBooks extends Component {
                 }
                 this.setState({ books: newBooks })
             }}catch(e){
-             console.log(e)
+             alert("Your search returned no results!")
             }
         })
     }

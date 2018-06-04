@@ -24,8 +24,7 @@ class App extends Component {
 
   clearShelfs = () => {
     this.state.books.map((book) => {
-      BooksAPI.update(book, 'none').then((res) => {
-        console.log('res', res)
+      BooksAPI.update(book, "none").then((res) => {
       })
     })
     this.setState({ books: [] })
