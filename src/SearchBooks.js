@@ -11,11 +11,9 @@ class SearchBooks extends Component {
     state = {
         books: [],
         query: ''
-
     }
 
     updateQuery = (query) => {
-
         const limparBooks = () => {
             this.setState({ books: [] })
             this.setState({ query: ' ' })
@@ -44,7 +42,6 @@ class SearchBooks extends Component {
     }
 
     render() {
-    
         return (
             <div className="search-books">
                 <div className="search-books-bar">
@@ -74,7 +71,6 @@ class SearchBooks extends Component {
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }

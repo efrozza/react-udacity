@@ -23,7 +23,6 @@ class App extends Component {
   }
 
   clearShelfs = () => {
-
     this.state.books.forEach((book) => {
       BooksAPI.update(book, "none").then((res) => {
       })

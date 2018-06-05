@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import BookShelf from './BookShelf'
-import Loading from 'react-loading-components'
+import BooksLoading from './BooksLoading'
 
 //componente que lista todas as estantes
 
@@ -39,10 +39,9 @@ class BooksList extends Component {
                 </div>
 
             </div>
-
         ) :
             (<div className="react-loading">
-                <Loading type='ball_triangle' width={100} height={100} fill='#f44242' />
+                <BooksLoading />
             </div>);
     }
 
