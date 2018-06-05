@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './css/App.css'
-
 //componente responsavel pela interface de livros
 
 class Book extends Component {

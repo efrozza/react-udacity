@@ -21,7 +21,7 @@ class SearchBooks extends Component {
             this.setState({ query: ' ' })
         }
 
-        if (query != '') {
+        if (query !== '') {
             this.setState({ query: query.trim() })
             BooksAPI.search(this.state.query).then((newBooks) => {
                 for (const s of newBooks) {
