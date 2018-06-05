@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './css/App.css'
-import Loading from 'react-loading-components'
 
 //componente responsavel pela interface de livros
 
