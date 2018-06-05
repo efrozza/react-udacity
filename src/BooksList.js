@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import BookShelf from './BookShelf'
+
 //componente que lista todas as estantes
 
 class BooksList extends Component {
@@ -9,22 +10,22 @@ class BooksList extends Component {
 
         return (
 
-            <div>
+            <div className="list-books-content">
                 <h2 className="bookshelf-title">Total books: {this.props.books.length}</h2>
                 <BookShelf books={this.props.books}
-                           shelf="currentlyReading" 
-                           shelfTitle="Currently Reading" 
-                           updateShelf={this.props.updateShelf} />
-                
-                <BookShelf books={this.props.books} 
-                           shelf="wantToRead" 
-                           shelfTitle="Want To Read" 
-                           updateShelf={this.props.updateShelf} />
+                    shelf="currentlyReading"
+                    shelfTitle="Currently Reading"
+                    updateShelf={this.props.updateShelf} />
 
-                <BookShelf books={this.props.books} 
-                           shelf="read" 
-                           shelfTitle="Read"
-                           updateShelf={this.props.updateShelf} />
+                <BookShelf books={this.props.books}
+                    shelf="wantToRead"
+                    shelfTitle="Want To Read"
+                    updateShelf={this.props.updateShelf} />
+
+                <BookShelf books={this.props.books}
+                    shelf="read"
+                    shelfTitle="Read"
+                    updateShelf={this.props.updateShelf} />
 
                 <div className="open-search">
                     <Link to="/search"

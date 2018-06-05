@@ -23,7 +23,8 @@ class App extends Component {
   }
 
   clearShelfs = () => {
-    this.state.books.map((book) => {
+
+    this.state.books.forEach((book) => {
       BooksAPI.update(book, "none").then((res) => {
       })
     })
@@ -33,10 +34,9 @@ class App extends Component {
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then((res) => {
       //apos atualizar o livro, remove o livro antigo e insere o novo 
-      const oldBooks = this.state.books.filter && this.state.books.filter(b => b.id !== book.id);
       book.shelf = shelf
-      const newBooks = oldBooks.concat(book)
-      this.setState({ books: newBooks })
+      const books = this.state.books.filter(b => b.id !== book.id).concat(book);
+      this.setState({ books: books })
     })
   }
 
@@ -50,15 +50,12 @@ class App extends Component {
           </div>
 
           <Route path="/search" render={() => (
-            <div>
-              <SearchBooks books={this.state.books} updateShelf={this.updateShelf} />
-            </div>
+            <SearchBooks books={this.state.books} updateShelf={this.updateShelf} />
           )} />
+
           <Route exact path="/" render={() => (
-            <div className="list-books-content">
-              <BooksList
-                books={this.state.books} updateShelf={this.updateShelf} clearShelfs={this.clearShelfs} />
-            </div>
+            <BooksList
+              books={this.state.books} updateShelf={this.updateShelf} clearShelfs={this.clearShelfs} />
           )} />
 
         </div>

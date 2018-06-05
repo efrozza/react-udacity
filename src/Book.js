@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './css/App.css'
+
 //componente responsavel pela interface de livros
 
 class Book extends Component {
@@ -13,6 +14,7 @@ class Book extends Component {
         this.props.updateShelf(this.props.book, event.target.value);
     }
 
+
     render() {
 
         //verifica se existem imagem para o livro a ser listado
@@ -25,6 +27,7 @@ class Book extends Component {
         }
 
         return (
+
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{
@@ -32,7 +35,7 @@ class Book extends Component {
                         backgroundImage: `url("${checkImage(this.props.book)}")`
                     }}>
                     </div>
-                    
+
                     <div className="book-shelf-changer">
                         <select value={this.props.book.shelf} onChange={this.handleChange}>
                             <option value="other" disabled>Move to...</option>

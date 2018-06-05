@@ -15,27 +15,38 @@ class SearchBooks extends Component {
     }
 
     updateQuery = (query) => {
-        this.setState({ query: query.trim() })
 
-        BooksAPI.search(this.state.query).then((newBooks) => { 
-            try{
-            for (const s of newBooks) {
-                s.shelf = "none"
-                for (const b of this.props.books) {
-                    if (s.id === b.id) {
-                        s.shelf = b.shelf
+        const limparBooks = () => {
+            this.setState({ books: [] })
+            this.setState({ query: ' ' })
+        }
+
+        if (query != '') {
+            this.setState({ query: query.trim() })
+            BooksAPI.search(this.state.query).then((newBooks) => {
+                for (const s of newBooks) {
+                    s.shelf = "none"
+                    for (const b of this.props.books) {
+                        if (s.id === b.id) {
+                            s.shelf = b.shelf
+                        }
                     }
+                    this.setState({ books: newBooks })
                 }
-                this.setState({ books: newBooks })
-            }}catch(e){
-             alert("Your search returned no results!")
+            }).catch(e => {
+                limparBooks()
+                alert("Your search returned no results!")
             }
-        })
+            )
+        } else {
+            limparBooks()
+        }
     }
 
     render() {
 
         return (
+
             <div className="search-books">
                 <div className="search-books-bar">
                     <Link
@@ -57,7 +68,7 @@ class SearchBooks extends Component {
                             <ol className="books-grid">
                                 {this.state.books.map && this.state.books.map((book) => (
                                     <li key={book.id}>
-                                        <Book book={book} updateShelf={this.props.updateShelf}/>
+                                        <Book book={book} updateShelf={this.props.updateShelf} />
                                     </li>
                                 ))}
                             </ol>
